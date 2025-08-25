@@ -1,0 +1,620 @@
+{
+  "qualifiedAppInstallScore": 2,
+  "paths": {
+    "number_options": [
+      {
+        "id": "use_case",
+        "title": "Congrats! Here's your number – your assistant is ready to go!",
+        "subtitle": "How would you like to continue?",
+        "multipleChoice": false,
+        "randomize": false,
+        "customView": "newNumber",
+        "options": [
+          {
+            "id": "new_number",
+            "title": "Use this as my new number"
+          },
+          {
+            "id": "new_number_customize",
+            "title": "Customize this number before using it"
+          },
+          {
+            "id": "existing_number",
+            "title": "I don't need a new number"
+          }
+        ]
+      },
+      {
+        "id": "existing_number_type",
+        "title": "Is your existing phone number...",
+        "multipleChoice": false,
+        "randomize": false,
+        "conditions": [
+          {
+            "type": "survey",
+            "value": [
+              {
+                "targetQuestionId": "use_case",
+                "anyOf": [
+                  "existing_number"
+                ]
+              }
+            ]
+          }
+        ],
+        "options": [
+          {
+            "id": "traditional_number",
+            "title": "a traditional number (e.g. T-Mobile)"
+          },
+          {
+            "id": "virtual_number",
+            "title": "a virtual number (e.g. Google Voice)"
+          }
+        ]
+      }
+    ],
+    "team_case_expertise_path": [
+      {
+        "id": "team_role",
+        "title": "What's your role in the team?",
+        "multipleChoice": false,
+        "randomize": true,
+        "options": [
+          {
+            "id": "business_owner",
+            "title": "Business Owner"
+          },
+          {
+            "id": "manager",
+            "title": "Manager"
+          },
+          {
+            "id": "employee",
+            "title": "Employee"
+          },
+          {
+            "id": "freelancer",
+            "title": "Freelancer"
+          }
+        ]
+      }
+    ],
+    "default": [
+      {
+        "id": "intended_contacts",
+        "title": "What kind of conversations will you have in M1?",
+        "multipleChoice": false,
+        "randomize": false,
+        "options": [
+          {
+            "id": "business",
+            "title": "Business"
+          },
+          {
+            "id": "personal",
+            "title": "Personal"
+          },
+          {
+            "id": "mix-both",
+            "title": "A mix of both"
+          }
+        ]
+      },
+      {
+        "id": "work_status",
+        "title": "What's your work situation?",
+        "multipleChoice": false,
+        "randomize": true,
+        "options": [
+          {
+            "id": "business_owner",
+            "score": 1,
+            "title": "Running my business or venture"
+          },
+          {
+            "id": "employee",
+            "title": "Employee in an organization"
+          },
+          {
+            "id": "independent",
+            "score": 1,
+            "title": "Independent/Freelancer"
+          },
+          {
+            "id": "other",
+            "isOther": true,
+            "title": "Other"
+          },
+          {
+            "id": "retired",
+            "title": "Retired"
+          },
+          {
+            "id": "student",
+            "title": "Student"
+          },
+          {
+            "id": "unemployed",
+            "title": "Unemployed"
+          }
+        ]
+      },
+      {
+        "id": "company_industry",
+        "title": "What's your company industry?",
+        "multipleChoice": false,
+        "randomize": true,
+        "conditions": [
+          {
+            "type": "survey",
+            "value": [
+              {
+                "targetQuestionId": "work_status",
+                "anyOf": [
+                  "business_owner",
+                  "employee"
+                ]
+              }
+            ]
+          }
+        ],
+        "options": [
+          {
+            "id": "construction_trade",
+            "title": "Construction/Trades"
+          },
+          {
+            "id": "real_estate",
+            "title": "Real Estate"
+          },
+          {
+            "id": "consulting",
+            "title": "Consulting"
+          },
+          {
+            "id": "e-commerce",
+            "title": "E-commerce"
+          },
+          {
+            "id": "transport_logistics",
+            "title": "Transportation/Logistics"
+          },
+          {
+            "id": "education",
+            "title": "Education"
+          },
+          {
+            "id": "retail",
+            "title": "Retail"
+          },
+          {
+            "id": "hospitality_tourism",
+            "title": "Hospitality/Tourism"
+          },
+          {
+            "id": "healthcare_medical",
+            "title": "Healthcare/Medical Services"
+          },
+          {
+            "id": "home_services",
+            "title": "Home Services"
+          },
+          {
+            "id": "professional_services",
+            "title": "Professional Services"
+          },
+          {
+            "id": "non_profit",
+            "title": "Non-profit/NGO"
+          },
+          {
+            "id": "media_com",
+            "title": "Media/Communication"
+          },
+          {
+            "id": "software",
+            "title": "Software"
+          },
+          {
+            "id": "arts_culture_entertainment",
+            "title": "Arts, Culture & Entertainment"
+          },
+          {
+            "id": "legal",
+            "title": "Law/Legal Services"
+          },
+          {
+            "id": "finance_insurance",
+            "title": "Finance/Insurance"
+          },
+          {
+            "id": "other",
+            "isOther": true,
+            "title": "Other"
+          }
+        ]
+      },
+      {
+        "id": "expertise",
+        "title": "What's your area of expertise?",
+        "multipleChoice": false,
+        "randomize": true,
+        "conditions": [
+          {
+            "type": "survey",
+            "value": [
+              {
+                "targetQuestionId": "work_status",
+                "notAnyOf": [
+                  "business_owner"
+                ]
+              }
+            ]
+          }
+        ],
+        "options": [
+          {
+            "id": "accounting_finance",
+            "title": "Accounting/Finance"
+          },
+          {
+            "id": "marketing",
+            "title": "Marketing"
+          },
+          {
+            "id": "sales",
+            "title": "Sales"
+          },
+          {
+            "id": "engineering_tech",
+            "title": "Engineering/Technology"
+          },
+          {
+            "id": "operations",
+            "title": "Operations"
+          },
+          {
+            "id": "customer_support",
+            "title": "Customer Support"
+          },
+          {
+            "id": "recruiting",
+            "title": "Recruiting"
+          },
+          {
+            "id": "business_development",
+            "title": "Business Development"
+          },
+          {
+            "id": "other",
+            "isOther": true,
+            "title": "Other"
+          },
+          {
+            "id": "real_estate",
+            "title": "Real Estate"
+          }
+        ]
+      },
+      {
+        "id": "company_size",
+        "title": "How big is your company?",
+        "multipleChoice": false,
+        "randomize": false,
+        "conditions": [
+          {
+            "type": "survey",
+            "value": [
+              {
+                "targetQuestionId": "work_status",
+                "anyOf": [
+                  "business_owner",
+                  "employee"
+                ]
+              }
+            ]
+          }
+        ],
+        "options": [
+          {
+            "id": "1",
+            "title": "Just me"
+          },
+          {
+            "id": "2-5",
+            "title": "2-5"
+          },
+          {
+            "id": "6-9",
+            "title": "6-9"
+          },
+          {
+            "id": "10-49",
+            "title": "10-49"
+          },
+          {
+            "id": "above_50",
+            "title": "50+"
+          }
+        ]
+      },
+      {
+        "id": "company_maturity",
+        "title": "How mature is your company?",
+        "multipleChoice": false,
+        "randomize": false,
+        "conditions": [
+          {
+            "type": "survey",
+            "value": [
+              {
+                "targetQuestionId": "work_status",
+                "anyOf": [
+                  "business_owner",
+                  "employee"
+                ]
+              }
+            ]
+          }
+        ],
+        "options": [
+          {
+            "id": "getting-started",
+            "title": "Just getting started (under 6 months)"
+          },
+          {
+            "id": "building",
+            "title": "In the building phase (6–24 months)"
+          },
+          {
+            "id": "growing",
+            "title": "Growing steadily (2–5 years)"
+          },
+          {
+            "id": "running-strong",
+            "title": "Running strong (5+ years)"
+          }
+        ]
+      },
+      {
+        "id": "team_intent",
+        "title": "Do you plan to use M1 with your team?",
+        "multipleChoice": false,
+        "randomize": false,
+        "conditions": [
+          {
+            "type": "survey",
+            "value": [
+              {
+                "targetQuestionId": "work_status",
+                "anyOf": [
+                  "business_owner",
+                  "employee"
+                ]
+              }
+            ]
+          },
+          {
+            "type": "survey",
+            "value": [
+              {
+                "targetQuestionId": "company_size",
+                "notAnyOf": [
+                  "1"
+                ]
+              }
+            ]
+          }
+        ],
+        "options": [
+          {
+            "id": "team_shared_number",
+            "title": "Yes, we'll share one number"
+          },
+          {
+            "id": "team_individual_numbers",
+            "title": "Yes, we'll need individual numbers"
+          },
+          {
+            "id": "no-team",
+            "title": "No, they won't use M1"
+          }
+        ]
+      },
+      {
+        "id": "call_volume",
+        "title": "How many calls do you get in a day?",
+        "multipleChoice": false,
+        "randomize": false,
+        "options": [
+          {
+            "id": "under-5",
+            "title": "Under 5"
+          },
+          {
+            "id": "5-9",
+            "title": "5-9"
+          },
+          {
+            "id": "10-24",
+            "title": "10-24"
+          },
+          {
+            "id": "25-49",
+            "title": "25-49"
+          },
+          {
+            "id": "above-50",
+            "title": "50+"
+          }
+        ]
+      },
+      {
+        "id": "feature",
+        "title": "What tasks do you need your assistant to handle?",
+        "multipleChoice": true,
+        "randomize": true,
+        "options": [
+          {
+            "id": "AI_call_summary",
+            "title": "Take call notes"
+          },
+          {
+            "id": "AI_voice_recorder",
+            "title": "Take in-person meeting notes"
+          },
+          {
+            "id": "daily_recap",
+            "title": "Track my to-dos"
+          },
+          {
+            "id": "other",
+            "isOther": true,
+            "title": "Other"
+          },
+          {
+            "id": "voicemail_receptionist",
+            "title": "Answer calls for me"
+          },
+          {
+            "id": "ask_M1",
+            "title": "Remember my conversations"
+          },
+          {
+            "id": "spam_protection",
+            "title": "Block spam calls"
+          }
+        ]
+      },
+      {
+        "id": "platform",
+        "title": "Where should your assistant work?",
+        "multipleChoice": true,
+        "randomize": true,
+        "options": [
+          {
+            "id": "iphone",
+            "title": "On my iPhone"
+          },
+          {
+            "id": "mac",
+            "title": "On my Mac"
+          },
+          {
+            "id": "pc",
+            "title": "On my PC"
+          }
+        ]
+      },
+      {
+        "id": "desktop_usecase",
+        "title": "How would you like to use M1 on your computer?",
+        "multipleChoice": true,
+        "randomize": true,
+        "conditions": [
+          {
+            "type": "survey",
+            "value": [
+              {
+                "targetQuestionId": "platform",
+                "anyOf": [
+                  "mac",
+                  "pc"
+                ]
+              }
+            ]
+          }
+        ],
+        "options": [
+          {
+            "id": "text_call_computer",
+            "title": "Text and call from my computer"
+          },
+          {
+            "id": "video_call_computer",
+            "title": "Record video calls (Zoom, Meet, etc.)"
+          },
+          {
+            "id": "no_need_computer",
+            "title": "I don't need this"
+          }
+        ]
+      },
+      {
+        "id": "age",
+        "title": "How old are you?",
+        "multipleChoice": false,
+        "randomize": false,
+        "options": [
+          {
+            "id": "below_18",
+            "title": "Below 18"
+          },
+          {
+            "id": "18-24",
+            "title": "18-24"
+          },
+          {
+            "id": "25-34",
+            "title": "25-34",
+            "score": 1
+          },
+          {
+            "id": "35-44",
+            "title": "35-44",
+            "score": 1
+          },
+          {
+            "id": "45-54",
+            "title": "45-54",
+            "score": 1
+          },
+          {
+            "id": "55-64",
+            "title": "55-64",
+            "score": 1
+          },
+          {
+            "id": "above_65",
+            "title": "Above 65",
+            "score": 1
+          }
+        ]
+      },
+      {
+        "id": "attribution",
+        "title": "How did you hear about M1?",
+        "multipleChoice": false,
+        "randomize": true,
+        "options": [
+          {
+            "id": "appstore",
+            "title": "I searched the App Store"
+          },
+          {
+            "id": "facebook",
+            "title": "Facebook"
+          },
+          {
+            "id": "instagram",
+            "title": "Instagram"
+          },
+          {
+            "id": "other",
+            "isOther": true,
+            "title": "Other"
+          },
+          {
+            "id": "web",
+            "title": "I searched the web"
+          },
+          {
+            "id": "someone",
+            "title": "Someone told me"
+          }
+        ]
+      }
+    ]
+  }
+}

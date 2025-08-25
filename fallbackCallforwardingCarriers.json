@@ -1,0 +1,48 @@
+[
+  {
+    "id": "verizon",
+    "carrierNameDisplay": "Verizon Wireless",
+    "prefixCode": "*72",
+    "suffixCode": "",
+    "disableNumber": "*73"
+  },
+  {
+    "id": "t-mobile",
+    "carrierNameDisplay": "T-Mobile",
+    "prefixCode": "**21*",
+    "suffixCode": "#",
+    "disableNumber": "##21#"
+  },
+  {
+    "id": "at&t",
+    "carrierNameDisplay": "AT&T Wireless",
+    "prefixCode": "*21*",
+    "suffixCode": "#",
+    "disableNumber": "#21#",
+    "stabilityWarning": {
+        "title": "AT&T stability update",
+        "message": "Some AT&T users may experience missing or poor audio on some forwarded calls. This is due to how AT&T handles call routing, we’re working with them to improve it."
+    }
+  },
+  {
+    "id": "spectrum",
+    "carrierNameDisplay": "Spectrum Mobile",
+    "prefixCode": "*72",
+    "suffixCode": "",
+    "disableNumber": "*73"
+  },
+  {
+    "id": "google",
+    "carrierNameDisplay": "Google Voice",
+    "prefixCode": "",
+    "suffixCode": "",
+    "shouldPort": true,
+    "helpCenterArticle": "9882799"
+  },
+  {
+    "id": "other",
+    "carrierNameDisplay": "Other",
+    "prefixCode": "",
+    "suffixCode": ""
+  }
+]

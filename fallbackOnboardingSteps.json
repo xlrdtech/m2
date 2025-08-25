@@ -1,0 +1,464 @@
+{
+  "permissionStepAsModal": false,
+  "showPostOnboardingTutorials": true,
+  "pages": [
+    {
+      "viewType": "start",
+      "ctaTitle": "Get Started",
+      "contentConfiguration": {
+        "title": "Welcome to M1",
+        "subtitle": "Starting today, your AI phone assistant\nsaves you 2 hours daily.",
+        "reviewTitle": "",
+        "loginTitle": "Log in",
+        "joinInboxTitle": "Join a Team",
+        "referralCodeTitle": "Enter referral code"
+      }
+    },
+    {
+      "viewType": "survey",
+      "contentConfiguration": {
+        "surveyPath": "default"
+      },
+      "conditions": [
+        {
+          "type": "joinInboxPath",
+          "value": false
+        }
+      ]
+    },
+    {
+      "viewType": "teamCode",
+      "contentConfiguration": {
+        "title": "Join a Shared Inbox.",
+        "subtitle": "Enter 6 digit code.",
+        "secondaryCTATitle": "If you've been invited to an Inbox, the person who invited you should have shared a 6 digit code."
+      },
+      "conditions": [
+        {
+          "type": "joinInboxPath",
+          "value": true
+        }
+      ]
+    },
+    {
+      "viewType": "survey",
+      "contentConfiguration": {
+        "surveyPath": "team_case_expertise_path"
+      },
+      "conditions": [
+        {
+          "type": "joinInboxPath",
+          "value": true
+        }
+      ]
+    },
+    {
+      "viewType": "paywall",
+      "contentConfiguration": {
+        "loadingTexts": []
+      },
+      "conditions": [
+        {
+          "type": "joinInboxPath",
+          "value": false
+        }
+      ]
+    },
+    {
+      "viewType": "signInWithApple",
+      "ctaTitle": "Continue with Apple",
+      "contentConfiguration": {
+        "title": "Welcome back to M1",
+        "subtitle": "Jump straight in.",
+        "secondaryCTA": "Continue with Phone Number",
+        "newUserTitle": "Create your account",
+        "newUserSubtitle": "Sign up to access M1 on\nall of your devices."
+      }
+    },
+    {
+      "viewType": "phone",
+      "contentConfiguration": {
+        "title": "Sign up or log in",
+        "subtitle": "We'll send a verification code to your phone.",
+        "helpTitle": "Enter your primary phone number\nYou'll use this to log into M1"
+      },
+      "conditions": [
+        {
+          "type": "authMethod",
+          "value": {
+            "apple": false
+          }
+        }
+      ]
+    },
+    {
+      "viewType": "code",
+      "contentConfiguration": {
+        "title": "Enter the code we texted you",
+        "subtitle": "We just sent a 6-digit code to {phoneNumber}."
+      },
+      "conditions": [
+        {
+          "type": "authMethod",
+          "value": {
+            "apple": false
+          }
+        }
+      ]
+    },
+    {
+      "viewType": "teamInviteMembers",
+      "conditions": [
+        {
+          "type": "survey",
+          "value": [
+            {
+              "targetQuestionId": "team_intent",
+              "anyOf": [
+                "team_shared_number"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "subscriptionType",
+          "value": {
+            "team": true
+          }
+        }
+      ]
+    },
+    {
+      "viewType": "assistantIntro",
+      "ctaTitle": "Let's go",
+      "contentConfiguration": {
+        "title": "Customize your\nAI assistant"
+      },
+      "conditions": [
+        {
+          "type": "joinInboxPath",
+          "value": false
+        }
+      ]
+    },
+    {
+      "viewType": "receptionistVoice",
+      "contentConfiguration": {
+        "title": "How should my voice sound?",
+        "subtitle": "You can customize this later with our full library of voices."
+      },
+      "conditions": [
+        {
+          "type": "joinInboxPath",
+          "value": false
+        }
+      ]
+    },
+    {
+      "viewType": "name",
+      "contentConfiguration": {
+        "title": "What should I call you?",
+        "subtitle": "This is your personal name, not your business name."
+      },
+      "conditions": [
+        {
+          "type": "joinInboxPath",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "receptionistGreetingType",
+      "viewType": "question",
+      "contentConfiguration": {
+        "id": "receptionist_greeting_type",
+        "title": "How should I greet callers when answering the phone?",
+        "subtitle": "I can answer your calls as a business receptionist or personal assistant.",
+        "icon": "catchup",
+        "multipleChoice": false,
+        "randomize": false,
+        "options": [
+          {
+            "id": "business",
+            "icon": "building.fill",
+            "title": "As your business receptionist",
+            "subtitle": "Hi, thank you for calling Acme Corp."
+          },
+          {
+            "id": "personal",
+            "icon": "person.fill",
+            "title": "As your personal assistant",
+            "subtitle": "Hi, thank you for calling {firstName}"
+          }
+        ]
+      },
+      "conditions": [
+        {
+          "type": "joinInboxPath",
+          "value": false
+        }
+      ]
+    },
+    {
+      "viewType": "companyWebsite",
+      "contentConfiguration": {
+        "title": "What's your business website?",
+        "subtitle": "I'll use your website to personalize my knowledge for you."
+      },
+      "conditions": [
+        {
+          "type": "joinInboxPath",
+          "value": false
+        }
+      ]
+    },
+    {
+      "viewType": "companyName",
+      "contentConfiguration": {
+        "title": "What's the name of your business?",
+        "subtitle": "I'll use this to best represent your company to callers."
+      },
+      "conditions": [
+        {
+          "type": "joinInboxPath",
+          "value": false
+        },
+        {
+          "type": "survey",
+          "value": [
+            {
+              "targetQuestionId": "receptionist_greeting_type",
+              "anyOf": [
+                "business"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "personalBusinessKnowledge",
+      "viewType": "receptionistBusinessKnowledge",
+      "contentConfiguration": {
+        "title": "How do you introduce yourself?",
+        "subtitle": "Give special instructions so I can best represent you.",
+        "questionnaireKey": "businessKnowledge"
+      },
+      "conditions": [
+        {
+          "type": "joinInboxPath",
+          "value": false
+        },
+        {
+          "type": "survey",
+          "value": [
+            {
+              "targetQuestionId": "receptionist_greeting_type",
+              "notAnyOf": [
+                "business"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "viewType": "receptionistProductServices",
+      "contentConfiguration": {
+        "title": "What services do you offer?"
+      },
+      "conditions": [
+        {
+          "type": "joinInboxPath",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "companyBusinessHours",
+      "viewType": "receptionistQuestionnaireEntry",
+      "contentConfiguration": {
+        "title": "What're your business hours?",
+        "questionnaireKey": "businessHours"
+      },
+      "conditions": [
+        {
+          "type": "joinInboxPath",
+          "value": false
+        },
+        {
+          "type": "survey",
+          "value": [
+            {
+              "targetQuestionId": "receptionist_greeting_type",
+              "anyOf": [
+                "business"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "companyWorkHours",
+      "viewType": "receptionistQuestionnaireEntry",
+      "contentConfiguration": {
+        "title": "What're your work hours?",
+        "questionnaireKey": "businessHours"
+      },
+      "conditions": [
+        {
+          "type": "joinInboxPath",
+          "value": false
+        },
+        {
+          "type": "survey",
+          "value": [
+            {
+              "targetQuestionId": "receptionist_greeting_type",
+              "notAnyOf": [
+                "business"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "companyFAQ",
+      "viewType": "receptionistQuestionnaireEntry",
+      "contentConfiguration": {
+        "title": "What're common FAQs that I should know for callers?",
+        "questionnaireKey": "faq"
+      },
+      "conditions": [
+        {
+          "type": "joinInboxPath",
+          "value": false
+        }
+      ]
+    },
+    {
+      "viewType": "assistantDemoCallIntro",
+      "contentConfiguration": {
+        "title": "Ask questions, test my knowledge,\nand see how I handle calls!"
+      },
+      "conditions": [
+        {
+          "type": "joinInboxPath",
+          "value": false
+        }
+      ]
+    },
+    {
+      "viewType": "assistantDemoCall",
+      "canGoBack": false,
+      "conditions": [
+        {
+          "type": "joinInboxPath",
+          "value": false
+        }
+      ]
+    },
+    {
+      "viewType": "callForwarding",
+      "contentConfiguration": {
+        "title": "Which calls should I answer and take notes on for you?"
+      },
+      "conditions": [
+        {
+          "type": "joinInboxPath",
+          "value": false
+        }
+      ]
+    },
+    {
+      "viewType": "permissionNotifications",
+      "contentConfiguration": {
+        "title": "Don't miss a call or text, enable notifications"
+      },
+      "conditions": [
+        {
+          "type": "joinInboxPath",
+          "value": false
+        }
+      ]
+    },
+    {
+      "viewType": "permissionContacts",
+      "ctaTitle": "Enable Contacts",
+      "contentConfiguration": {
+        "title": "See who's calling with contact permissions"
+      },
+      "conditions": [
+        {
+          "type": "joinInboxPath",
+          "value": false
+        }
+      ]
+    },
+    {
+      "viewType": "permission",
+      "contentConfiguration": {
+        "notificationsSubtitle": "Don't miss a message",
+        "notificationsTitle": "Notifications",
+        "contactsSubtitle": "Speak with your people",
+        "micSubtitle": "Phone calls & audio notes",
+        "privacySubtitle": "We encrypt your address book, so your phone numbers remain just for you.",
+        "micTitle": "Microphone",
+        "privacyTitle": "Your privacy & data matter to us",
+        "contactsTitle": "Contacts",
+        "title": "Allow permissions\nto use M1"
+      },
+      "conditions": [
+        {
+          "type": "joinInboxPath",
+          "value": true
+        }
+      ]
+    },
+    {
+      "viewType": "assistantDemoCallOutroNotes",
+      "contentConfiguration": {
+        "primaryTitle": "I'll send key points right after every call I handle for you...",
+        "secondaryTitle": "Here's what I wrote from our demo call"
+      },
+      "conditions": [
+        {
+          "type": "joinInboxPath",
+          "value": false
+        }
+      ]
+    }
+  ],
+  "qualifiedTransactionConditions": [
+    {
+      "type": "survey",
+      "value": [
+        {
+          "targetQuestionId": "age",
+          "notAnyOf": [
+            "below_18",
+            "18-24",
+            "55-64",
+            "above_65"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "survey",
+      "value": [
+        {
+          "targetQuestionId": "work_status",
+          "notAnyOf": [
+            "retired",
+            "unemployed",
+            "employee",
+            "student"
+          ]
+        }
+      ]
+    }
+  ]
+}
